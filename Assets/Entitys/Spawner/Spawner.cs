@@ -27,7 +27,8 @@ public class Spawner : MonoBehaviour
             timer=timer-spawnTimer;
             float randomRange= Random.Range(startSapwner.transform.position.x,endSpawner.transform.position.y);
             actualPos  = new Vector2(randomRange,startSapwner.transform.position.y);
-            Instantiate(enemys[Random.Range(0,(enemys.Length-1))],actualPos,Quaternion.identity);
+            int randomEnemy=Random.Range(0,(enemys.Length));
+            Instantiate(enemys[randomEnemy],actualPos,Quaternion.identity);
         }
         
 

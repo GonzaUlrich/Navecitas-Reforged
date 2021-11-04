@@ -14,7 +14,7 @@ public class Enemy1Live : MonoBehaviour
     private int points = 1;    
     
 
-    public Text score;
+    private Text score;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Text>();
@@ -23,14 +23,18 @@ public class Enemy1Live : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        enemy1Lives--;
-        if(enemy1Lives<=0){
-            if(other.tag=="Bullet"){
+        if (other.tag == "Bullet")
+        {
+            enemy1Lives--;
+            if (enemy1Lives <= 0)
+            {
                 int num = int.Parse(score.text);
-                num+= points;
+                num += points;
                 score.text = num.ToString();
+                Destroy(gameObject);
             }
-            
+        }
+        else if(other.tag == "Player"){
             Destroy(gameObject);
         }
     }

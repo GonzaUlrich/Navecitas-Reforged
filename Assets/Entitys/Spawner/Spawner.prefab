@@ -111,3 +111,4 @@ MonoBehaviour:
   spawnerInstanciate: {fileID: 0}
   enemys:
   - {fileID: 857091379338872125, guid: 6b40d890d41ba0047b1f10a293f1459d, type: 3}
+  - {fileID: 7172915826608610672, guid: fd9b70bb8eb950b4e920d1fdf9248e5c, type: 3}

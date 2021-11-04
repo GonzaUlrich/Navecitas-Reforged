@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy1Movement : MonoBehaviour
 {
     public GameObject target;
-    float movementSpeed =3;
+    [Range(0.0f,10f)]
+    [SerializeField]
+    private float movementSpeed =3;
 
     private void Start() {
         target= GameObject.Find("Player");

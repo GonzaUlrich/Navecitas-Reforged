@@ -20,6 +20,5 @@ public class Enemy2Shoot : MonoBehaviour
             timer=timer-shootMaxTimer;
             Instantiate(myPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         }
-        
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8808937179549587587}
   - component: {fileID: 8589279615173431425}
   - component: {fileID: 6187806544118040508}
-  - component: {fileID: 5024564113768734065}
+  - component: {fileID: 7130278110846843075}
   - component: {fileID: 4809773827429155010}
   m_Layer: 0
   m_Name: MeteoroChico
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5024564113768734065
+--- !u!114 &7130278110846843075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8713485548538669173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed0a7b79c4054e46b25524ba2754a9f, type: 3}
+  m_Script: {fileID: 11500000, guid: f594e4dcd16a5be49ad19968d444e670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteoroChicoLives: 1
+  lives: 1
   points: 5
 --- !u!114 &4809773827429155010
 MonoBehaviour:

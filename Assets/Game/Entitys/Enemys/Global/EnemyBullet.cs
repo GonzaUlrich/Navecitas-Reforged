@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [Range(0.0f,10f)]
     [SerializeField]
@@ -13,12 +11,14 @@ public class Enemy2Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-
         if (other.tag == "Bullet")
         {
             Destroy(gameObject);
         }
         else if(other.tag == "Player"){
+            Destroy(gameObject);
+        }
+        else if(other.tag == "DeathBox"){
             Destroy(gameObject);
         }
     }

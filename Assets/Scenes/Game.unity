@@ -704,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9061309313940354365, guid: 12f8aef5ff9526344b27bfe99bffc4aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0266
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 9061309313940354365, guid: 12f8aef5ff9526344b27bfe99bffc4aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -751,22 +751,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3690622470941473787, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: spawnTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -3690622470941473787, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: activeBoss1
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -3690622470941473787, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: bosses.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -3690622470941473787, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: bosses.Array.data[0]
-      value: 
-      objectReference: {fileID: 85305138618385116, guid: 9e041bf1fc602ba488e15e403cf68651, type: 3}
     - target: {fileID: 1295853603195435190, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -811,17 +795,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7190218865160266752, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.49
-      objectReference: {fileID: 0}
     - target: {fileID: 8803500172443434420, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
       propertyPath: m_Name
       value: Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 9175138946411145494, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11fbf1edbdeec4e4f83f5dfbef2a9981, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLives : MonoBehaviour
 {
     private int lives = 3;
+    public GameObject gameOver;
 
     int getLives(){
         return lives;
@@ -12,16 +13,16 @@ public class PlayerLives : MonoBehaviour
     void setDamage(int damage){
         lives-=damage;
         if(lives<=0){
-            Debug.Log("Game Over");
+            gameOver.GetComponent<GameOver>().EndGame();
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        
         if(other.tag=="Bullet"){
 
         }else{
             setDamage(1);
-            Debug.Log(lives);
         }
     }
 

@@ -15,9 +15,11 @@ public class Boss1Movement : MonoBehaviour
     }
 
     void Update(){
-        Vector3 dir = pos.transform.position - transform.position;
-        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.position += transform.right * Time.deltaTime * movementSpeed;
+        if (Vector3.Distance(pos.transform.position,transform.position)>0.01){
+            Vector3 dir = pos.transform.position - transform.position;
+            float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.position += transform.right * Time.deltaTime * movementSpeed;
+        }
     }
 }

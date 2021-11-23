@@ -47,7 +47,15 @@ public class Spawner : MonoBehaviour
                     float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
                     actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
                     int randomEnemy = Random.Range(0, (enemys.Length));
-                    Instantiate(enemys[randomEnemy], actualPos, Quaternion.identity);
+                    if(randomEnemy==0){
+                        for(int i = 0; i<3 ;i++){
+                            Instantiate(enemys[randomEnemy], actualPos, Quaternion.identity);
+                            randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
+                            actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
+                        }
+                    }else{
+                        Instantiate(enemys[randomEnemy], actualPos, Quaternion.identity);
+                    }
                     checkTimer();
                 break;
                 //--------

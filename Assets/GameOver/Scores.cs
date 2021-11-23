@@ -12,7 +12,6 @@ public class Scores : MonoBehaviour
     {
         hiScore = GameObject.Find("ValueHiScore").GetComponent<Text>();
         score = GameObject.Find("ValueScore").GetComponent<Text>();
-        Debug.Log(GameOver.hiScore);
         if(GameOver.gameScore > GameOver.hiScore){
             hiScore.text = GameOver.gameScore.ToString();
             GameOver.hiScore =GameOver.gameScore;

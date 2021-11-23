@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 43ad050085ea3f24f9a857a7dba5f0ca, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 4320889251274982442, guid: 531c68bddf38518449b5a2b0bd580f92, type: 3}
-  shootMaxTimer: 1.5
+  shootMaxTimer: 0.8
 --- !u!114 &2271186107392109280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {fileID: 0}
-  movementSpeed: 3
+  movementSpeed: 4
 --- !u!114 &8880486854181288536
 MonoBehaviour:
   m_ObjectHideFlags: 0

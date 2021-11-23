@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLives : MonoBehaviour
 {
-    private int lives = 3;
+    public int lives = 3;
     public GameObject gameOver;
 
     int getLives(){

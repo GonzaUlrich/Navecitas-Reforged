@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class EnemyLife : MonoBehaviour
 {
-    [Range(1.0f, 10.0f)]
+    [Range(1.0f, 1000.0f)]
     [SerializeField]
     private int lives = 10;
     

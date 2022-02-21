@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
         width = height * cam.aspect;
     }
 
+    void Awake()
+    {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
     void Update()
     {
 

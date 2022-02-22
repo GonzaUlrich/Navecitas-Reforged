@@ -11,7 +11,9 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Instantiate(myPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            Debug.Log("PEW PEW");
+            GameObject bullet = Instantiate(myPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            bullet.GetComponent<BulletMovement>().SetParentPlayer(this.gameObject);
         }
         
     }

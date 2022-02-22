@@ -14,9 +14,22 @@ public class PlayerMovementOnline : Mirror.NetworkBehaviour
 
     private Mirror.NetworkManager networkManager;
     private void Start() {
+        if(!isServer)
+        return;
 
-        networkManager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Mirror.Examples.Pong.NetworkManagerPong>();
+    SetupCamera(this.gameObject.GetComponent<Mirror.NetworkIdentity>().connectionToClient,GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Mirror.Examples.Pong.NetworkManagerPong>().numPlayers);
+
+    }
+
+    [Mirror.TargetRpc]
+    public void SetupCamera(Mirror.NetworkConnection target, int playernum)
+    {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Debug.Log("CUANTOS PLAYERS TENGO???: " + playernum);
+        if(playernum > 1)
+        {
+            cam.transform.Rotate(new Vector3(0,0,180));
+        }
     
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;

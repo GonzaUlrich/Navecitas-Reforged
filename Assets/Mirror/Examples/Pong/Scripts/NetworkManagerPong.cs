@@ -63,7 +63,6 @@ namespace Mirror.Examples.Pong
 
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-
             // call base functionality (actually destroys the player)
             base.OnServerDisconnect(conn);
         }

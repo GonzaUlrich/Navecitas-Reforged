@@ -25,7 +25,7 @@ public class PlayerShootOnline : Mirror.NetworkBehaviour
     [Mirror.Command]
     void CmdFire()
     {
-        GameObject _bullet = Instantiate(serverBullet, new Vector3(transform.position.x, transform.position.y,transform.position.z), Quaternion.identity);
+        GameObject _bullet = Instantiate(serverBullet, new Vector3(transform.position.x, transform.position.y,transform.position.z), transform.rotation);
         _bullet.GetComponent<BulletMovement>().SetParentPlayer(this.gameObject);
 
         Mirror.NetworkServer.Spawn(bullet);
@@ -35,7 +35,7 @@ public class PlayerShootOnline : Mirror.NetworkBehaviour
     [Mirror.ClientRpc]
     void RpcLocalFire()
     {
-        GameObject _bullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y,transform.position.z), Quaternion.identity);
+        GameObject _bullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y,transform.position.z), transform.rotation);
         _bullet.GetComponent<BulletMovement>().SetParentPlayer(this.gameObject);
     }
 }

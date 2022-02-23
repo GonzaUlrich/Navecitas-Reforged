@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyLife : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class EnemyLife : MonoBehaviour
     private int points = 1;    
     
 
-    private Text score;
+    private GameObject score;
     private bool isABoss=false;
     private bool isAMeteoro=false;
 
     private void Start() {
-        score = GameObject.Find("Score").GetComponent<Text>();
+        score = GameObject.Find("ScoreTotalUltimate4");
         if(string.Compare(gameObject.name,0,"Boss",0,4) == 0){
             isABoss=true;
         }else if(string.Compare(gameObject.name,0,"MeteoroGrande",0,13) == 0){
@@ -31,11 +32,12 @@ public class EnemyLife : MonoBehaviour
         if (other.tag == "Bullet"){
             lives--;
             if (lives <= 0){
-                int num = int.Parse(score.text);
-                num += points;
-                score.text = num.ToString();
+                score.GetComponent<SetHiScore>().AddScore(points);
                 if(isAMeteoro){
                     gameObject.GetComponent<MeteoroGrandeDestroy>().Boom();
+                }
+                if(isABoss){
+                    SceneManager.LoadScene("MultiplayerTest");
                 }
                 Destroy(gameObject);
             }
@@ -45,6 +47,8 @@ public class EnemyLife : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
+
         if(other.tag == "DeathBox"){
             Destroy(gameObject);
         }

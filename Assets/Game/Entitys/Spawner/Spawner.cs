@@ -25,10 +25,11 @@ public class Spawner : MonoBehaviour
     private int state=0;
     private bool boss1appear = true;
     GameObject clone;
-
+    private int checkSpawnBoss;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Text>();
+        checkSpawnBoss = PlayerPrefs.GetInt("score");
     }
 
     void Update()
@@ -38,7 +39,7 @@ public class Spawner : MonoBehaviour
         
         if (timer > spawnTimer )
         {
-            if (scoreNum>=spawnBoss1 && boss1appear){
+            if (scoreNum>=spawnBoss1+checkSpawnBoss && boss1appear){
                 state=1;
             }
                 
@@ -61,6 +62,7 @@ public class Spawner : MonoBehaviour
                 //--------
                 case 1:
                     if(timer > spawnTimer + 5){
+
                         clone = Instantiate(bosses[0], transform.position, Quaternion.identity);
                         state=90;
                         timer = timer - spawnTimer + 5;

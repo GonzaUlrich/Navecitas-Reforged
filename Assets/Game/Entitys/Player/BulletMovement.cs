@@ -11,7 +11,7 @@ public class BulletMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.up * Time.deltaTime * movementSpeed;
+        transform.position += transform.up * Time.deltaTime * movementSpeed;
         timer += Time.deltaTime;
         if(timer>3){
             Destroy(gameObject);

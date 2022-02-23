@@ -35,7 +35,7 @@ public class PlayerLivesOnline : Mirror.NetworkBehaviour
     {
         Debug.Log("IM DEAD  " +  this.gameObject.name);
         Mirror.NetworkManager.singleton.StopClient();
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("GameOver");//:C
         //ACA PONE LO QUE LE PASA AL PETE QUE SE MUERE.
     }
 

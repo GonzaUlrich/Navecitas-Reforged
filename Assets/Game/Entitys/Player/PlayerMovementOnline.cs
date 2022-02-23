@@ -6,6 +6,7 @@ public class PlayerMovementOnline : Mirror.NetworkBehaviour
 {
     [SerializeField]
     private float speed = 3.5f;
+    private bool toyAlRevez= false;
 
     public GameObject camObject;
     public Camera cam;
@@ -29,6 +30,8 @@ public class PlayerMovementOnline : Mirror.NetworkBehaviour
         if(playernum > 1)
         {
             cam.transform.Rotate(new Vector3(0,0,180));
+            toyAlRevez=true;
+
         }
     
         height = 2f * cam.orthographicSize;
@@ -71,7 +74,8 @@ public class PlayerMovementOnline : Mirror.NetworkBehaviour
 
         float verticalImput = Input.GetAxis("Vertical");
         float horizontallImput = Input.GetAxis("Horizontal");
-        //horizontal block
+        if(!toyAlRevez){
+            //horizontal block
         if(transform.position.x + (transform.position.x * 0.1f) >= (cam.transform.position.x + (width/2.0f))){
             if(horizontallImput>0){
                 horizontallImput=0;
@@ -92,7 +96,32 @@ public class PlayerMovementOnline : Mirror.NetworkBehaviour
             if(verticalImput<0){
                 verticalImput=0;
             }
+        }
+        }else{
+            //horizontal block
+        if(transform.position.x + (transform.position.x * 0.1f) >= (cam.transform.position.x + (width/2.0f))){
+            if(horizontallImput<0){
+                horizontallImput=0;
+            }
+        }
+        if(transform.position.x + (transform.position.x * 0.1f) <= (cam.transform.position.x - (width/2.0f))){
+            if(horizontallImput>0){
+                horizontallImput=0;
+            }
+        }
+        //vertical block
+        if(transform.position.y + (transform.position.y * 0.1f) >= (cam.transform.position.y + (height/2.0f))){
+            if(verticalImput<0){
+                verticalImput=0;
+            }
         }   
+        if(transform.position.y + (transform.position.y * 0.1f) <= (cam.transform.position.y - (height/2.0f))){
+            if(verticalImput>0){
+                verticalImput=0;
+            }
+        }
+        }
+           
 
         Vector3 direction = new Vector3(horizontallImput, verticalImput,0f);
         transform.Translate(direction * speed *Time.deltaTime);

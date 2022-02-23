@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     public void Play(){
-          SceneManager.LoadScene("Game");
+        PlayerPrefs.SetInt("score",0);
+        PlayerPrefs.SetInt("hiScore",0);
+        SceneManager.LoadScene("Game");
     }
 
     public void Exit(){

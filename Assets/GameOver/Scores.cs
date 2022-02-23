@@ -12,14 +12,15 @@ public class Scores : MonoBehaviour
     {
         hiScore = GameObject.Find("ValueHiScore").GetComponent<Text>();
         score = GameObject.Find("ValueScore").GetComponent<Text>();
-        if(GameOver.gameScore > GameOver.hiScore){
-            hiScore.text = GameOver.gameScore.ToString();
-            GameOver.hiScore =GameOver.gameScore;
+        
+        if(PlayerPrefs.GetInt("score") > PlayerPrefs.GetInt("hiScore")){
+            hiScore.text = PlayerPrefs.GetInt("score").ToString();
+            PlayerPrefs.SetInt("hiScore",PlayerPrefs.GetInt("score"));
         }else{
-            hiScore.text = GameOver.hiScore.ToString();
+            hiScore.text = PlayerPrefs.GetInt("hiScore").ToString();
             
         }
-        score.text = GameOver.gameScore.ToString();
+        score.text = PlayerPrefs.GetInt("score").ToString();
 
     }
     public void goToMennu(){

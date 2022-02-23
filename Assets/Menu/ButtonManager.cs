@@ -5,7 +5,8 @@ public class ButtonManager : MonoBehaviour
 {
     public void Play(){
         PlayerPrefs.SetInt("score",0);
-        PlayerPrefs.SetInt("hiScore",0);
+        
+        PlayerPrefs.SetInt("hiScore",PlayerPrefs.GetInt("hiScore"));
         SceneManager.LoadScene("Game");
     }
 

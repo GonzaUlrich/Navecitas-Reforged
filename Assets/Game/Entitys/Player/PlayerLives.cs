@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class PlayerLives : MonoBehaviour
         return lives;
     }
     void setDamage(int damage){
+
         lives-=damage;
         if(lives<=0){
+            
             gameOver.GetComponent<GameOver>().EndGame();
         }
     }

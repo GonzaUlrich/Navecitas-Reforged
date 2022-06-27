@@ -7,14 +7,21 @@ public class PlayerLives : MonoBehaviour
 {
     public int lives = 3;
     public GameObject gameOver;
+    public GameObject vida;
 
+    private void Start()
+    {
+        vida = GameObject.Find("ScoreTotalUltimate4");
+        vida.GetComponent<SetVida>().setVida(lives);
+    }
     int getLives(){
         return lives;
     }
     void setDamage(int damage){
 
         lives-=damage;
-        if(lives<=0){
+        vida.GetComponent<SetVida>().restaVida(damage);
+        if (lives<=0){
             
             gameOver.GetComponent<GameOver>().EndGame();
         }
@@ -28,5 +35,6 @@ public class PlayerLives : MonoBehaviour
             setDamage(1);
         }
     }
+   
 
 }

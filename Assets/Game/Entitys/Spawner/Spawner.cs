@@ -17,8 +17,11 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private int spawnBoss1;
 
+    private GameObject prefab;
+
     public GameObject[] enemys;
     public GameObject[] bosses;
+    public Sprite[] sprites;
 
     private Text score;
     private int scoreNum;
@@ -27,16 +30,41 @@ public class Spawner : MonoBehaviour
     GameObject clone;
     private int checkSpawnBoss;
 
+    private List<int> listObjts = new List<int>();
+    private List<Vector2> listPos = new List<Vector2>();
+
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Text>();
         checkSpawnBoss = PlayerPrefs.GetInt("score");
+
+        prefab = GameObject.Find("Prefab");
     }
 
     void Update()
     {
         timer += Time.deltaTime;
         scoreNum = int.Parse(score.text);
+
         
+        
+        while(listObjts.Count<10){
+            float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
+            actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
+            int randomEnemy = Random.Range(0, (enemys.Length));
+            if(randomEnemy==0){
+                for(int i = 0; i<3 ;i++){
+                    listObjts.Add(randomEnemy);
+                    listPos.Add(actualPos);
+                    randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
+                    actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
+                }
+            }else{
+                listObjts.Add(randomEnemy);
+                listPos.Add(actualPos);
+            }
+
+        }
+
         if (timer > spawnTimer )
         {
             if (scoreNum>=spawnBoss1+checkSpawnBoss && boss1appear){
@@ -45,17 +73,21 @@ public class Spawner : MonoBehaviour
                 
             switch(state){
                 case 0:
-                    float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
-                    actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
-                    int randomEnemy = Random.Range(0, (enemys.Length));
-                    if(randomEnemy==0){
+                    //float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
+                    //actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
+                    //int randomEnemy = Random.Range(0, (enemys.Length));
+                    if(listObjts[0]==0){
                         for(int i = 0; i<3 ;i++){
-                            Instantiate(enemys[randomEnemy], actualPos, Quaternion.identity);
-                            randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
-                            actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
+                            Instantiate(enemys[listObjts[0]], listPos[0], Quaternion.identity);
+                            listObjts.RemoveAt(0);
+                            listPos.RemoveAt(0);
                         }
+                        listObjts.RemoveAt(0);
+                        listPos.RemoveAt(0);
                     }else{
-                        Instantiate(enemys[randomEnemy], actualPos, Quaternion.identity);
+                        Instantiate(enemys[listObjts[0]], listPos[0], Quaternion.identity);
+                        listObjts.RemoveAt(0);
+                        listPos.RemoveAt(0);
                     }
                     checkTimer();
                 break;
@@ -80,7 +112,7 @@ public class Spawner : MonoBehaviour
                 break;
             }
 
-            
+            ShowNextEnemy();
                 
             
         }
@@ -88,6 +120,42 @@ public class Spawner : MonoBehaviour
     private void checkTimer(){
         while(timer>spawnTimer){
             timer = timer - spawnTimer;
+        }
+    }
+
+    private void ShowNextEnemy(){
+        
+        Debug.Log(prefab);
+        switch(listObjts[0]){
+            case 0:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[0]; 
+                prefab.transform.position = new Vector2 (listPos[0].x , prefab.transform.position.y);
+            break;
+            case 1:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[1]; 
+                prefab.transform.position = new Vector2 (listPos[1].x , prefab.transform.position.y);
+            break;
+            case 2:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[2];
+                prefab.transform.position = new Vector2 (listPos[2].x , prefab.transform.position.y); 
+            break;
+            case 3:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[3];
+                prefab.transform.position = new Vector2 (listPos[3].x , prefab.transform.position.y); 
+            break;
+            case 4:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[4]; 
+                prefab.transform.position = new Vector2 (listPos[4].x , prefab.transform.position.y);
+            break;
+            case 5:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[5]; 
+                prefab.transform.position = new Vector2 (listPos[5].x , prefab.transform.position.y);
+            break;
+            case 6:
+                prefab.GetComponent<SpriteRenderer>().sprite = sprites[6]; 
+                prefab.transform.position = new Vector2 (listPos[6].x , prefab.transform.position.y);
+            break;
+
         }
     }
 }

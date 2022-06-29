@@ -12,15 +12,15 @@ public class PlayerLives : MonoBehaviour
     private void Start()
     {
         vida = GameObject.Find("ScoreTotalUltimate4");
-        vida.GetComponent<SetVida>().setVida(lives);
     }
-    int getLives(){
+
+    public int getLives(){
         return lives;
     }
     void setDamage(int damage){
 
         lives-=damage;
-        vida.GetComponent<SetVida>().restaVida(damage);
+        vida.GetComponent<SetVida>().restaVida(lives, damage);
         if (lives<=0){
             
             gameOver.GetComponent<GameOver>().EndGame();

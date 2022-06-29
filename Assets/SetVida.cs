@@ -4,22 +4,19 @@ using UnityEngine.UI;
 public class SetVida : MonoBehaviour
 {
     private Text vidaGO;
-    private int vida;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
+    private GameObject player;
+
+
+    private void Start() {
+        player = GameObject.Find("Player");
         vidaGO = GameObject.Find("Vidas").GetComponent<Text>();
+        vidaGO.text = player.GetComponent<PlayerLives>().getLives().ToString();
     }
 
-    public void setVida(int num)
-    {
-        vida = num;
 
-    }
-    public void restaVida(int num)
+    public void restaVida(int lives,int num)
     {
-        vidaGO.text = (vida - num).ToString();
+        vidaGO.text = (lives - num).ToString();
        
     }
 }

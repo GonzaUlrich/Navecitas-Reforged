@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1815848488862774785}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3159d02d46e32242b2568a16b196214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForward: 2
+  movementForward: 5
   movementSides: 2
   distance: 1.5
 --- !u!114 &3726003669267356942
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f594e4dcd16a5be49ad19968d444e670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
-  points: 5
+  lives: 5
+  points: 10
 --- !u!50 &4296842891267195086
 Rigidbody2D:
   serializedVersion: 4

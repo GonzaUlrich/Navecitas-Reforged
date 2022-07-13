@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6863719c17764184a8293e1c919f585b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 2.5
 --- !u!114 &2923475782725994966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 8403098539692561442, guid: a561617f763910b4aa06b5299156c1a2, type: 3}
-  shootMaxTimer: 1.5
+  shootMaxTimer: 0.75
 --- !u!50 &760492713791734947
 Rigidbody2D:
   serializedVersion: 4

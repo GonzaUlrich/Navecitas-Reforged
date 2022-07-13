@@ -13,7 +13,7 @@ public class BulletMovement : MonoBehaviour
     {
         transform.position += transform.up * Time.deltaTime * movementSpeed;
         timer += Time.deltaTime;
-        if(timer>3){
+        if(timer>2){
             Destroy(gameObject);
         }
     }

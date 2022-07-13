@@ -15,11 +15,12 @@ public class Enemy1Live : MonoBehaviour
     
 
     private Text score;
+    private int scoreNum;
 
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Text>();
+        scoreNum = int.Parse(score.text);
     }
-
 
     private void OnTriggerEnter2D(Collider2D other) {
 

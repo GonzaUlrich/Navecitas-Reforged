@@ -15,17 +15,18 @@ public class Spawner : MonoBehaviour
     private float timer;
     Vector2 actualPos;
     [SerializeField]
-    private int spawnBoss1;
+    private float spawnBoss1;
 
     private GameObject prefab;
 
-    public GameObject[] enemys;
+    public List<GameObject> enemys;
     public GameObject[] bosses;
     public Sprite[] sprites;
+    public float proximoJefe;
 
     private Text score;
     private int scoreNum;
-    private int state=0;
+    private int state = 0;
     private bool boss1appear = true;
     GameObject clone;
     private int checkSpawnBoss;
@@ -33,97 +34,103 @@ public class Spawner : MonoBehaviour
     private List<int> listObjts = new List<int>();
     private List<Vector2> listPos = new List<Vector2>();
 
+    public GameObject testeEnemy;
+    private bool enemyAdd = false;
+
+
     private void Start() {
         score = GameObject.Find("Score").GetComponent<Text>();
         checkSpawnBoss = PlayerPrefs.GetInt("score");
 
         prefab = GameObject.Find("Prefab");
+        
     }
-
     void Update()
     {
         timer += Time.deltaTime;
         scoreNum = int.Parse(score.text);
-
-        
-        
-        while(listObjts.Count<10){
+        if (scoreNum >= 600 && enemyAdd == false)
+        {
+            addEnemy(testeEnemy);
+            enemyAdd = true;
+        }
+        while (listObjts.Count < 10) {
             float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
             actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
-            int randomEnemy = Random.Range(0, (enemys.Length));
-            if(randomEnemy==0){
-                for(int i = 0; i<3 ;i++){
+            int randomEnemy = Random.Range(0, (enemys.Count));
+            if (randomEnemy == 0) {
+                for (int i = 0; i < 3; i++) {
                     listObjts.Add(randomEnemy);
                     listPos.Add(actualPos);
                     randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
                     actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
                 }
-            }else{
+            } else {
                 listObjts.Add(randomEnemy);
                 listPos.Add(actualPos);
             }
-
         }
-
-        if (timer > spawnTimer )
+        if (timer > spawnTimer)
         {
-            if (scoreNum>=spawnBoss1+checkSpawnBoss && boss1appear){
-                state=1;
+            if (scoreNum >= spawnBoss1 + checkSpawnBoss && boss1appear) {
+                state = 1;
             }
-                
-            switch(state){
+            switch (state) {
                 case 0:
                     //float randomRange = Random.Range(startSapwner.transform.position.x, endSpawner.transform.position.x);
                     //actualPos = new Vector2(randomRange, startSapwner.transform.position.y);
                     //int randomEnemy = Random.Range(0, (enemys.Length));
-                    if(listObjts[0]==0){
-                        for(int i = 0; i<3 ;i++){
+                    if (listObjts[0] == 0) {
+                        for (int i = 0; i < 3; i++) {
                             Instantiate(enemys[listObjts[0]], listPos[0], Quaternion.identity);
                             listObjts.RemoveAt(0);
                             listPos.RemoveAt(0);
                         }
                         listObjts.RemoveAt(0);
                         listPos.RemoveAt(0);
-                    }else{
+                    } else {
                         Instantiate(enemys[listObjts[0]], listPos[0], Quaternion.identity);
                         listObjts.RemoveAt(0);
                         listPos.RemoveAt(0);
                     }
                     checkTimer();
-                break;
+                    break;
                 //--------
                 case 1:
-                    if(timer > spawnTimer + 5){
+                    if (timer > spawnTimer + 5) {
 
                         clone = Instantiate(bosses[0], transform.position, Quaternion.identity);
-                        state=90;
+                        clone.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0.1f,1.0f), Random.Range(0.1f, 1.0f), Random.Range(0.1f, 1.0f));
+                        state = 90;
                         timer = timer - spawnTimer + 5;
-                        boss1appear=false;
+                        boss1appear = false;
                     }
-                    
-                break;
+                    break;
                 case 90:
-                   if(clone==null){
-                       state=0;
-                       timer=0;
-                   }
-                break;
+                    if (clone == null) {
+                        state = 0;
+                        timer = 0;
+                        boss1appear = true;
+                        spawnBoss1 += proximoJefe*=1.2f;
+                    }
+                    break;
                 default:
-                break;
+                    break;
             }
-
-            ShowNextEnemy();
-                
-            
+            //  ShowNextEnemy();                            
         }
     }
-    private void checkTimer(){
-        while(timer>spawnTimer){
+    private void checkTimer() {
+        while (timer > spawnTimer) {
             timer = timer - spawnTimer;
         }
     }
+    public void addEnemy(GameObject _enemy)
+    {
+        enemys.Add(_enemy);
+    }
 
-    private void ShowNextEnemy(){
+   /* private void ShowNextEnemy(){
         
         Debug.Log(prefab);
         switch(listObjts[0]){
@@ -157,5 +164,5 @@ public class Spawner : MonoBehaviour
             break;
 
         }
-    }
+    }*/
 }

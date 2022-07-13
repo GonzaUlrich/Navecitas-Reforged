@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 4320889251274982442, guid: 531c68bddf38518449b5a2b0bd580f92, type: 3}
-  shootMaxTimer: 0.8
+  shootMaxTimer: 1.2
 --- !u!114 &2271186107392109280
 MonoBehaviour:
   m_ObjectHideFlags: 0

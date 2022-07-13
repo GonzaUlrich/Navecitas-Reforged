@@ -16,9 +16,7 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.SetInt("hiScore",PlayerPrefs.GetInt("hiScore"));
         SceneManager.LoadScene("Game");
     }
-
     public void Exit(){
         Application.Quit();
     }
-
 }

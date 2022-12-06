@@ -34,7 +34,11 @@ public class Spawner : MonoBehaviour
     private List<int> listObjts = new List<int>();
     private List<Vector2> listPos = new List<Vector2>();
 
+
+
     public GameObject testeEnemy;
+    public GameObject testeEnemy2;
+
     private bool enemyAdd = false;
 
 
@@ -52,6 +56,11 @@ public class Spawner : MonoBehaviour
         if (scoreNum >= 600 && enemyAdd == false)
         {
             addEnemy(testeEnemy);
+            enemyAdd = true;
+        }
+        if (scoreNum >= 1000 && enemyAdd == false)
+        {
+            addEnemy(testeEnemy2);
             enemyAdd = true;
         }
         while (listObjts.Count < 10) {

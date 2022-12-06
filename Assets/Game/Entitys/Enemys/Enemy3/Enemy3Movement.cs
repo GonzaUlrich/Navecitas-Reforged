@@ -27,7 +27,7 @@ public class Enemy3Movement : MonoBehaviour
         lateralMovement = Random.Range(0,2);
         score = GameObject.Find("Score").GetComponent<Text>();
         scoreNum = int.Parse(score.text);
-        if (scoreNum > 1000)
+        if (scoreNum > 2000)
         {
             movementForward *= 1.5f;
             movementSides *= 1.5f;

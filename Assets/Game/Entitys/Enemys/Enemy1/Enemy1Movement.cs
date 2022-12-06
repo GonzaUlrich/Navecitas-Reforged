@@ -17,7 +17,7 @@ public class Enemy1Movement : MonoBehaviour
         target= GameObject.Find("Player");
         score = GameObject.Find("Score").GetComponent<Text>();
         scoreNum = int.Parse(score.text);
-        if (scoreNum > 1000)
+        if (scoreNum > 1200)
         {
             movementSpeed *=2 ;
         }

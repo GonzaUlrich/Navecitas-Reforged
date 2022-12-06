@@ -25,6 +25,14 @@ public class Scores : MonoBehaviour
         score.text = PlayerPrefs.GetInt("score").ToString();
 
     }
+ 
+    public void Play()
+    {
+        PlayerPrefs.SetInt("score", 0);
+
+        PlayerPrefs.SetInt("hiScore", PlayerPrefs.GetInt("hiScore"));
+        SceneManager.LoadScene("Game");
+    }
     public void goToMennu(){
         SceneManager.LoadScene("Menu");
     }
